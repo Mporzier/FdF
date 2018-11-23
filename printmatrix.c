@@ -6,7 +6,7 @@
 /*   By: mporzier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:56:11 by mporzier          #+#    #+#             */
-/*   Updated: 2018/11/22 15:33:03 by mporzier         ###   ########.fr       */
+/*   Updated: 2018/11/22 18:57:18 by mporzier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,32 @@
 
 void	print_matrix(t_window ptr, t_point **matrix, t_point size)
 {
-	t_point origin;
-	t_point	a;
+	int		x;
+	int		y;
 
-	origin.x = ORIGIN_X;
-	origin.y = ORIGIN_Y;
-	a.x = 480;
-	a.y = 960;
-	print_line(a, origin, ptr);
+	x = 0;
+	y = 0;
+	while (y < size.y)
+	{
+		while (x < size.x - 1)
+		{
+			print_line(matrix[y][x], matrix[y][x + 1], ptr);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+	y = 0;
+	while (x < size.x)
+	{
+		while (y < size.y - 1)
+		{
+			print_line(matrix[y][x], matrix[y + 1][x], ptr);
+			y++;
+		}
+		y = 0;
+		x++;
+	}
 }
 
 

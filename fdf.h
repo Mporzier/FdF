@@ -6,7 +6,7 @@
 /*   By: mporzier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 10:12:16 by mporzier          #+#    #+#             */
-/*   Updated: 2018/11/22 15:32:14 by mporzier         ###   ########.fr       */
+/*   Updated: 2018/11/22 17:20:05 by mporzier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include "libft/libft.h"
 # include <mlx.h>
-# define ORIGIN_X 500
-# define ORIGIN_Y 980
+# define ORI_X 500
+# define ORI_Y 50
 
 typedef	struct		s_point
 {

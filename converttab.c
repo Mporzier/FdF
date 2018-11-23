@@ -6,7 +6,7 @@
 /*   By: mporzier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:46:46 by mporzier          #+#    #+#             */
-/*   Updated: 2018/11/22 14:32:47 by mporzier         ###   ########.fr       */
+/*   Updated: 2018/11/22 18:59:45 by mporzier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_point		**convert_tab(int **tab, t_point size)
 	int		x;
 	int		y;
 	t_point	**matrix;
+	int i;
+	int k;
 
 	y = 0;
 	x = 0;
@@ -43,8 +45,8 @@ t_point		**convert_tab(int **tab, t_point size)
 		while (x < size.x)
 		{
 			matrix[y][x].height = tab[y][x];
-			matrix[y][x].x = x;
-			matrix[y][x].y = y;
+			matrix[y][x].x = ORI_X + x * 20 - y * 20;
+			matrix[y][x].y = ORI_Y + x * 20 + y * 20 - matrix[y][x].height * 3;
 			x++;
 		}
 		x = 0;
