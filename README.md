@@ -6,3 +6,4 @@ Controls :
 - Numpad "+" and "-" for zoom controls
 - Numpad "1" and "4" for changing scale of point height
 - Numpad "." for a different perspective
+- Esc to quit
