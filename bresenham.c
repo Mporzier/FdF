@@ -6,16 +6,16 @@
 /*   By: mporzier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 16:28:49 by mporzier          #+#    #+#             */
-/*   Updated: 2018/11/22 18:38:21 by mporzier         ###   ########.fr       */
+/*   Updated: 2018/12/10 15:40:18 by mporzier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	case_verti(t_window ptr, t_point xy, t_point inc, t_point d)
+void	case_verti(t_points m, t_point xy, t_point inc, t_point d)
 {
-	int	cumul;
-	int	k;
+	int		cumul;
+	int		k;
 
 	k = 1;
 	cumul = d.y / 2;
@@ -28,15 +28,15 @@ void	case_verti(t_window ptr, t_point xy, t_point inc, t_point d)
 			cumul -= d.y;
 			xy.x += inc.x;
 		}
-		mlx_pixel_put(ptr.mlx_ptr, ptr.win_ptr, xy.x, xy.y, 0xFFFFFFF);
+		fill_pixel(m.ptr.i_s, xy.x, xy.y, calc_color(m));
 		k++;
 	}
 }
 
-void	case_horiz(t_window ptr, t_point xy, t_point inc, t_point d)
+void	case_horiz(t_points m, t_point xy, t_point inc, t_point d)
 {
-	int	cumul;
-	int	k;
+	int		cumul;
+	int		k;
 
 	k = 1;
 	cumul = d.x / 2;
@@ -49,17 +49,21 @@ void	case_horiz(t_window ptr, t_point xy, t_point inc, t_point d)
 			cumul -= d.x;
 			xy.y += inc.y;
 		}
-		mlx_pixel_put(ptr.mlx_ptr, ptr.win_ptr, xy.x, xy.y, 0xFFFFFFF);
+		fill_pixel(m.ptr.i_s, xy.x, xy.y, calc_color(m));
 		k++;
 	}
 }
 
-void	print_line(t_point i, t_point f, t_window ptr)
+void	print_line(t_point i, t_point f, t_env ptr)
 {
 	t_point		d;
 	t_point		xy;
 	t_point		inc;
+	t_points	m;
 
+	m.a = i;
+	m.b = f;
+	m.ptr = ptr;
 	xy.x = i.x;
 	xy.y = i.y;
 	d.x = f.x - i.x;
@@ -68,9 +72,9 @@ void	print_line(t_point i, t_point f, t_window ptr)
 	inc.y = (d.y > 0) ? 1 : -1;
 	d.x = ft_abs(d.x);
 	d.y = ft_abs(d.y);
-	mlx_pixel_put(ptr.mlx_ptr, ptr.win_ptr, xy.x, xy.y, 0xFFFFFFF);
+	fill_pixel(ptr.i_s, xy.x, xy.y, calc_color(m));
 	if (d.x > d.y)
-		case_horiz(ptr, xy, inc, d);
+		case_horiz(m, xy, inc, d);
 	else
-		case_verti(ptr, xy, inc, d);
+		case_verti(m, xy, inc, d);
 }

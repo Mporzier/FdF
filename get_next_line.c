@@ -6,12 +6,12 @@
 /*   By: mporzier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 17:36:47 by mporzier          #+#    #+#             */
-/*   Updated: 2018/11/21 09:31:44 by mporzier         ###   ########.fr       */
+/*   Updated: 2018/12/10 14:29:20 by mporzier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft/libft.h"
+#include "fdf.h"
 
 int				calc(char *str)
 {
@@ -84,7 +84,7 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	if (build_line(line, &file[fd], &i) == 1)
 		return (-1);
-	if (ret == 0 && i == 0)
+	if ((ret == 0 && i == 0) || file[fd] == NULL)
 		return (0);
 	return (1);
 }
